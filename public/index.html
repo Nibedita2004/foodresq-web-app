@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ResQFood-Welcome</title> <!-- Google font (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap"
+    rel="stylesheet"> <!-- Shared site styles -->
+  <link rel="stylesheet" href="/css/styles.css"> <!-- Chatbot styles -->
+  <link rel="stylesheet" href="/css/chatbot.css">
+</head>
+
+<body class="site-body">
+  <video autoplay muted loop playsinline id="heroVideo" class="background-video">
+    <source src="/videos/aurora.mp4" type="video/mp4">
+  </video>
+  <header class="topbar container">
+    <div class="brand-left"> <a href="/" class="brand-link">
+        <h1 class="brand-title">
+          <video autoplay muted loop playsinline class="brand-icon" aria-label="ResQFood animated logo">
+            <source src="/videos/logo.webm" type="video/webm">
+            <!-- optional fallback text -->
+            Your browser does not support the video tag.
+          </video>
+          ResQFood
+        </h1>
+        <div class="brand-sub">Share surplus food • Save lives • Reduce waste</div>
+      </a> </div>
+    <nav class="nav-right">
+      <a href="/login.html" class="nav-link">Sign in</a>
+      <a href="/register.html" class="cssbuttons-io-button">
+        Get started
+        <div class="icon">
+          <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+              fill="currentColor"></path>
+          </svg>
+        </div>
+      </a>
+    </nav>
+
+  </header>
+  <main class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-grid">
+      <section class="hero-left">
+        <h2 class="hero-title">Rescue good food. Feed your community.</h2>
+        <p class="hero-sub"> Food Rescue is a community-driven platform connecting donors with volunteers to
+          redistribute surplus food quickly and safely. Create listings, claim pickups, and help reduce food waste in
+          your area. </p>
+        <div class="hero-ctas">
+          <a href="/register.html" class="learn-more-link">
+            <button class="learn-more">
+              <span aria-hidden="true" class="circle">
+                <span class="icon arrow"></span>
+              </span>
+              <span class="button-text">Learn More</span>
+            </button>
+          </a>
+
+        </div>
+        <ul class="feature-list">
+          <li>Fast listing creation</li>
+          <li>Volunteer pickup coordination</li>
+          <li>Simple and secure authentication</li>
+        </ul>
+      </section>
+      <aside class="hero-card">
+        <div class="card-inner">
+          <h3 class="card-title">How it works</h3>
+          <ol class="steps">
+            <li><strong>Donor:</strong> Create a listing of surplus food.</li>
+            <li><strong>Volunteer:</strong> Claim the pickup and collect the donation.</li>
+            <li><strong>Complete:</strong> Mark pickup complete — food gets redistributed.</li>
+          </ol>
+        </div>
+      </aside>
+    </div>
+  </main>
+  <br><br><br>
+  <footer class="site-footer">
+    <div class="container footer-card">
+      <h3 class="footer-title">Get in touch</h3>
+      <p class="footer-sub">
+        We'd love to hear from you. Whether you're a donor, volunteer, or partner — reach out anytime.
+      </p>
+
+      <div class="contact-info">
+        <div class="contact-item">
+          <!-- <img src="/images/phone.svg" alt="Phone" class="contact-icon" /> -->
+          <span>+91 98765 432XX</span>
+        </div>
+        <div class="contact-item">
+          <!-- <img src="/images/mail.svg" alt="Email" class="contact-icon" /> -->
+          <span>support@foodrescue.org</span>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- Chatbot widget -->
+  <div id="chatbot-widget" class="chatbot-widget">
+   <!-- 💬 ResQBot Animated Loader Toggle -->
+<div id="chatbot-toggle" class="loader-wrapper" role="button" tabindex="0" aria-label="Open chatbot">
+  <span class="loader-letter">R</span>
+  <span class="loader-letter">e</span>
+  <span class="loader-letter">s</span>
+  <span class="loader-letter">Q</span>
+  <span class="loader-letter">B</span>
+  <span class="loader-letter">o</span>
+  <span class="loader-letter">t</span>
+  <div class="loader"></div>
+</div>
+
+
+
+
+    <div id="chatbot-window" class="chatbot-window hidden">
+      <div class="chatbot-header"> <span>🤖 ResQBot</span> <button id="chatbot-close">✖</button> </div>
+      <div id="chatbot-messages" class="chatbot-messages">
+        <div class="bot-msg">Hi there! 👋 I'm <b>ResQBot</b> — your friendly guide to the Food Rescue platform.<br> Ask
+          me anything about how it works!</div>
+      </div>
+      <div class="chatbot-input"> <input type="text" id="chatbot-user-input" placeholder="Type your question..." />
+        <button id="chatbot-send">Send</button>
+      </div>
+    </div>
+  </div>
+  <script> document.getElementById('year').textContent = new Date().getFullYear(); </script>
+  <script src="/js/chatbot.js"></script>
+</body>
+
+</html>

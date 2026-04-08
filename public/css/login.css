@@ -1,0 +1,281 @@
+/* login.css
+   Clean, centered card-style login page.
+   Keeps IDs and form action unchanged for JS compatibility.
+*/
+
+:root {
+    --bg-1: #f2f5f7;
+    --card-bg: #ffffff;
+    --muted: #6b7280;
+    --accent: #14b8a6;
+    --accent-dark: #0ea99a;
+    --danger: #ef4444;
+    --shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+    --radius-lg: 16px;
+    --radius-md: 10px;
+    --max-width: 420px;
+    --gap: 14px;
+}
+
+/* Global reset + typography */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #0f172a;
+    /* background: url("/images/treee.jpeg") no-repeat center center fixed;
+    background-size: cover; */
+}
+
+/* Page layout */
+.page-wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+}
+
+.center-viewport {
+    width: 100%;
+    max-width: 1100px;
+    display: grid;
+    place-items: center;
+    gap: 18px;
+}
+
+/* Inner container for intro + card */
+.center-card-wrap {
+    width: 100%;
+    max-width: var(--max-width);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+}
+
+/* Intro text */
+.intro {
+    text-align: center;
+}
+
+.intro-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.intro-sub {
+    margin: 6px 0 0 0;
+    font-size: 13px;
+    color: black;
+}
+
+/* Card */
+.card {
+  width:100%;
+  max-width:560px;
+  background: rgba(255,255,255,0.35);    /* semi-transparent white */
+  border-radius: 18px;
+  padding: 28px 30px;
+  box-shadow: 0 18px 50px rgba(6,22,38,0.12);
+  border: 1px solid rgba(255,255,255,0.36);
+  backdrop-filter: blur(6px) saturate(120%);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+
+
+/* Form */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label {
+    font-size: 13px;
+    color:black;
+    font-weight: 500;
+}
+
+/* Inputs */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 11px 12px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    background: linear-gradient(180deg, #ffffff, #fbfdff);
+    font-size: 14px;
+    outline: none;
+    transition: box-shadow .14s ease, border-color .14s ease, transform .06s ease;
+    box-shadow: inset 0 -1px 0 rgba(15, 23, 42, 0.02);
+}
+
+input::placeholder {
+    color: #9aa0a6;
+}
+
+input:focus {
+    border-color: rgba(20, 184, 166, 0.9);
+    box-shadow: 0 6px 20px rgba(20, 184, 166, 0.08);
+    transform: translateY(-1px);
+}
+
+/* Actions */
+.form-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: space-between;
+    margin-top: 6px;
+}
+
+
+
+/* small link */
+.already-link {
+    color: whitesmoke;
+    text-decoration:wavy;
+    font-size: 13px;
+}
+
+.already-link:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+/* Form status */
+.form-status {
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--danger);
+    min-height: 18px;
+}
+
+/* Footer */
+.site-footer {
+    text-align: center;
+    color: whitesmoke;
+    font-size: 13px;
+}
+
+/* Mobile adjustments */
+@media(max-width:540px) {
+    .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .already-link {
+        text-align: center;
+        display: block;
+        margin-top: 8px;
+    }
+
+    .card {
+        padding: 16px;
+        border-radius: 12px;
+    }
+}
+
+/* Focus visible */
+input:focus-visible,
+button:focus-visible {
+    outline: 3px solid rgba(20, 184, 166, 0.12);
+    outline-offset: 3px;
+}
+
+/* Micro animation */
+.card {
+    transform-origin: center top;
+    animation: floatIn .14s ease-out 1;
+}
+
+@keyframes floatIn {
+    from {
+        transform: translateY(6px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* --- Compact Fancy Hover Button (login page) --- */
+.fancy-btn {
+  padding: 10px 18px;              /* compact padding */
+  border: unset;
+  border-radius: 12px;
+  color: #212121;
+  z-index: 1;
+  background: #e8e8e8;
+  position: relative;
+  font-weight: 700;
+  font-size: 15px;
+  -webkit-box-shadow: 3px 6px 14px -3px rgba(0,0,0,0.25);
+  box-shadow: 3px 6px 14px -3px rgba(0,0,0,0.25);
+  transition: all 250ms;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.fancy-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 12px;
+  background-color: #212121;
+  z-index: -1;
+  -webkit-box-shadow: 3px 6px 14px -3px rgba(0,0,0,0.25);
+  box-shadow: 3px 6px 14px -3px rgba(0,0,0,0.25);
+  transition: all 250ms;
+}
+
+.fancy-btn:hover {
+  color: #e8e8e8;
+}
+
+.fancy-btn:hover::before {
+  width: 100%;
+}
+
+.fancy-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+#bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover; /* ✅ fills screen while preserving aspect ratio */
+  z-index: -1;
+  background-color: #000; /* prevents white bars during loading */
+}

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login — Food Rescue</title>
+
+  <link rel="stylesheet" href="/css/login.css">
+</head>
+
+<body class="auth-body">
+  <video autoplay muted loop id="bgVideo">
+  <source src="/videos/sparkle.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+
+  <div class="page-wrap">
+    <div class="center-viewport">
+
+      <div class="center-card-wrap">
+        <div class="intro text-center">
+          <h1 class="intro-title" style="color:aqua">Welcome back</h1>
+          <p class="intro-sub" style="color:white">Log in to manage listings and pickups</p>
+        </div>
+
+        <main class="card" aria-labelledby="login-title">
+          <h2 id="login-title" class="visually-hidden" style="color:rgb(23, 214, 214)">Login</h2>
+
+          <form id="loginForm" class="form" action="/api/users/login" method="POST" novalidate>
+            <div class="form-row">
+              <label for="email" class="label" style="color:white">Email</label>
+              <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com" />
+            </div>
+
+            <div class="form-row">
+              <label for="password" class="label"style="color:white">Password</label>
+              <input id="password" name="password" type="password" required autocomplete="current-password"
+                placeholder="Your password" />
+            </div>
+
+            <div class="form-actions">
+              <button id="loginBtn" type="submit" class="fancy-btn">Sign in</button>
+
+
+
+            </div>
+
+            <div id="formStatus" role="status" aria-live="polite" class="form-status"></div>
+          </form>
+        </main>
+
+        <footer class="site-footer">
+          Don't have an account? <a href="register.html" style="color:aqua; text-decoration:none;"
+            onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">
+            Register now.
+          </a>
+        </footer>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="/js/auth.js"></script>
+  <script>
+    if (typeof loginFormHandler === 'function') {
+      const form = document.getElementById('loginForm');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('loginBtn');
+        btn.disabled = true;
+        try { await loginFormHandler(form); } finally { btn.disabled = false; }
+      });
+    }
+  </script>
+</body>
+
+</html>

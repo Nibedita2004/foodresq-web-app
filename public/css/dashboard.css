@@ -1,0 +1,742 @@
+/* dashboard.css
+   Plain CSS replacement for Tailwind classes used in the dashboard.
+   Keeps IDs and DOM structure intact so JS continues to work.
+*/
+
+:root {
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --muted: #6b7280;
+  --muted-2: #94a3b8;
+  --accent: #14b8a6;
+  --accent-dark: #0ea99a;
+  --shadow-lg: 0 12px 40px rgba(15, 23, 42, 0.08);
+  --shadow-sm: 0 6px 18px rgba(15, 23, 42, 0.04);
+  --radius-lg: 14px;
+  --radius-md: 8px;
+  --container-width: 1100px;
+  --gap: 18px;
+}
+
+/* base */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* background: url("/images/treee.jpeg") no-repeat center center fixed;
+  background-size: cover; */
+  color: #0f172a;
+}
+
+/* top bar */
+.topbar {
+  background: var(--card-bg);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.03);
+  
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 12px 18px;
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.brand-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.app-sub {
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* user controls */
+.user-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-info {
+  font-size: 14px;
+  color: #0f172a;
+}
+
+.btn-outline {
+  background: rgb(246, 244, 244);
+  border: 1px solid rgba(18, 83, 234, 0.06);
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  color:white;
+}
+
+.btn-outline:hover {
+  background: #f2f3f4;
+  color:black;
+}
+
+/* main layout grid */
+.main-grid {
+  max-width: var(--container-width);
+  margin: 18px auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap);
+  padding: 0 18px 48px;
+}
+
+@media(min-width: 992px) {
+  .main-grid {
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
+  }
+}
+
+/* panels (cards) */
+.panel {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(15, 23, 42, 0.03);
+}
+
+/* listings panel specifics */
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.panel-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.panel-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* listings stack */
+.listings-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* single listing card (JS will create elements with similar classes) */
+.listing-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  background: linear-gradient(180deg, #fff, #fbfdff);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.listing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+}
+
+.listing-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.listing-title {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.listing-meta {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* side panel specifics */
+.side-panel .section-title {
+  margin: 0 0 8px 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+/* forms in side panel */
+.stack-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stack-form input[type="text"],
+.stack-form input[type="number"],
+.stack-form input[type="date"],
+.stack-form input,
+.stack-form textarea,
+.stack-form select {
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  font-size: 14px;
+  background: linear-gradient(180deg, #fff, #fbfdff);
+  outline: none;
+}
+
+.stack-form input:focus {
+  border-color: rgba(20, 184, 166, 0.9);
+  box-shadow: 0 8px 22px rgba(20, 184, 166, 0.06);
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  appearance: none;
+  border: none;
+  background: linear-gradient(180deg, var(--accent), var(--accent-dark));
+  color: white;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 8px 22px rgba(20, 184, 166, 0.16);
+}
+
+.btn-primary.small {
+  padding: 8px 10px;
+  font-size: 13px;
+}
+
+.btn-primary.full {
+  width: 100%;
+}
+.action-btn{
+  background-color: #0ea99a;
+  color: whitesmoke;
+  border-radius: 20%;
+}
+
+/* small utilities */
+.hidden {
+  display: none;
+}
+
+.form-output {
+  margin-top: 8px;
+  color: #b91c1c;
+  font-size: 13px;
+  white-space: pre-wrap;
+}
+
+/* toast */
+.toast-root {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 60;
+}
+
+/* responsiveness adjustments */
+@media (max-width: 991px) {
+  .container {
+    padding: 10px 14px;
+  }
+
+  .panel {
+    padding: 12px;
+    border-radius: 12px;
+  }
+}
+
+/* accessibility focus */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgba(20, 184, 166, 0.12);
+  outline-offset: 3px;
+}
+
+/* =========================
+   🔮 GLASSMORPHISM STYLING
+   ========================= */
+
+/* Navbar glass look */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  background: rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+}
+
+/* Make title section stand out slightly */
+.app-title {
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.3px;
+}
+
+.app-sub {
+  color: rgba(15, 23, 42, 0.6);
+  font-size: 13px;
+}
+
+/* =========================
+   🌫️ CARD / PANEL GLASS LOOK
+   ========================= */
+.panel {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 18px 60px rgba(15, 23, 42, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.panel:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.16);
+}
+
+/* Listing cards glass variation */
+.listing-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.listing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+}
+
+
+/* =========================
+   🌟 BUTTON ENHANCEMENTS
+   ========================= */
+.btn-outline {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 50px rgba(20, 184, 166, 0.2);
+}
+
+/* =========================
+   💫 NICE FADE-IN ON LOAD
+   ========================= */
+body.app-body {
+  animation: fadeInApp 0.8s ease-in-out;
+}
+
+@keyframes fadeInApp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+/* =========================
+   🌊 THEMED LOGOUT BUTTON (Teal variant of Uiverse button)
+   ========================= */
+
+/* =========================
+   🖤 LOGOUT BUTTON — BLACK VARIANT
+   ========================= */
+
+.Btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
+  background-color: #212121; /* solid black base */
+}
+
+/* icon wrapper */
+.sign {
+  width: 100%;
+  transition-duration: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign svg {
+  width: 17px;
+}
+
+.sign svg path {
+  fill: white; /* white arrow icon */
+}
+
+/* text inside the button */
+.text {
+  position: absolute;
+  right: 0%;
+  width: 0%;
+  opacity: 0;
+  color: white;
+  font-size: 1.1em;
+  font-weight: 600;
+  transition-duration: .3s;
+}
+
+/* hover expand animation */
+.Btn:hover {
+  width: 120px;
+  border-radius: 40px;
+  transition-duration: .3s;
+  background-color: #000; /* stays black on hover */
+}
+
+.Btn:hover .sign {
+  width: 30%;
+  transition-duration: .3s;
+  padding-left: 20px;
+}
+
+.Btn:hover .text {
+  opacity: 1;
+  width: 70%;
+  transition-duration: .3s;
+  padding-right: 10px;
+}
+
+/* click press animation */
+.Btn:active {
+  transform: translate(2px, 2px);
+}
+
+/* optional glow on hover */
+.Btn:hover {
+  box-shadow: 3px 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Compact sliding fancy button (same as login/register) --- */
+.fancy-btn {
+  padding: 10px 18px;              /* compact padding */
+  border: unset;
+  border-radius: 12px;
+  color: #212121;
+  z-index: 1;
+  background: #e8e8e8;
+  position: relative;
+  font-weight: 700;
+  font-size: 15px;
+  -webkit-box-shadow: 3px 6px 14px -3px rgba(0,0,0,0.25);
+  box-shadow: 3px 6px 14px -3px rgba(0,0,0,0.25);
+  transition: all 250ms;
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+  display: inline-block;
+}
+
+/* sliding fill */
+.fancy-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 12px;
+  background-color: #212121; /* dark slide — same as auth pages */
+  z-index: -1;
+  -webkit-box-shadow: 3px 6px 14px -3px rgba(0,0,0,0.25);
+  box-shadow: 3px 6px 14px -3px rgba(0,0,0,0.25);
+  transition: all 250ms;
+}
+
+.fancy-btn:hover {
+  color: #e8e8e8;
+}
+
+.fancy-btn:hover::before {
+  width: 100%;
+}
+
+/* full width variant used in side-panel form */
+.fancy-btn.full {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+
+/* smaller variant (if used elsewhere) */
+.fancy-btn.small {
+  padding: 8px 10px;
+  font-size: 13px;
+  border-radius: 10px;
+}
+
+/* disabled state */
+.fancy-btn:disabled,
+.fancy-btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+
+/* ---------- ResQBot Animated Loader Toggle ---------- */
+#chatbot-toggle.loader-wrapper {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  user-select: none;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 500;
+  z-index: 9999;
+  transition: transform 0.3s ease;
+}
+
+#chatbot-toggle.loader-wrapper:hover {
+  transform: scale(0.95);
+}
+
+/* animated ring behind text */
+#chatbot-toggle .loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background-color: transparent;
+  animation: loader-rotate 2s linear infinite;
+  z-index: 0;
+}
+
+@keyframes loader-rotate {
+  0% {
+    transform: rotate(90deg);
+    box-shadow:
+      0 10px 20px 0 #fff inset,
+      0 20px 30px 0 #ad5fff inset,
+      0 60px 60px 0 #471eec inset;
+  }
+  50% {
+    transform: rotate(270deg);
+    box-shadow:
+      0 10px 20px 0 #fff inset,
+      0 20px 10px 0 #d60a47 inset,
+      0 40px 60px 0 #311e80 inset;
+  }
+  100% {
+    transform: rotate(450deg);
+    box-shadow:
+      0 10px 20px 0 #fff inset,
+      0 20px 30px 0 #ad5fff inset,
+      0 60px 60px 0 #471eec inset;
+  }
+}
+
+
+/* animated text */
+#chatbot-toggle .loader-letter {
+  display: inline-block;
+  opacity: 0.4;
+  transform: translateY(0);
+  animation: loader-letter-anim 2s infinite;
+  z-index: 1;
+  color: white;
+  font-size: 1.1em;
+}
+
+#chatbot-toggle .loader-letter:nth-child(1) { animation-delay: 0s; }
+#chatbot-toggle .loader-letter:nth-child(2) { animation-delay: 0.1s; }
+#chatbot-toggle .loader-letter:nth-child(3) { animation-delay: 0.2s; }
+#chatbot-toggle .loader-letter:nth-child(4) { animation-delay: 0.3s; }
+#chatbot-toggle .loader-letter:nth-child(5) { animation-delay: 0.4s; }
+#chatbot-toggle .loader-letter:nth-child(6) { animation-delay: 0.5s; }
+#chatbot-toggle .loader-letter:nth-child(7) { animation-delay: 0.6s; }
+
+@keyframes loader-letter-anim {
+  0%, 100% {
+    opacity: 0.4;
+    transform: translateY(0);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  40% {
+    opacity: 0.7;
+    transform: translateY(0);
+  }
+}
+#bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover; /* ✅ fills screen while preserving aspect ratio */
+  z-index: -1;
+  background-color: #000; /* prevents white bars during loading */
+}
+.action-btn.danger { background: #ef4444; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; }
+.action-btn.danger:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ==== Fancy Delete Button ==== */
+/* === Refined inline Delete Button (for dashboard actions) === */
+/* === Refined inline Delete Button (for dashboard actions) === */
+/* === Refined inline Delete Button (for dashboard actions) === */
+/* ==== Reliable inline Delete button (animated, text always visible) ==== */
+/* === Compact Delete Button (icon + text, stable inline style) === */
+.delete-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;                  /* spacing between icon and text */
+  height: 36px;
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: #e62222;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  margin-left: 6px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.delete-btn svg {
+  width: 14px;
+  height: 14px;
+  fill: #fff;
+  flex-shrink: 0;
+}
+
+.delete-btn:hover {
+  background: #ff3636;
+}
+
+.delete-btn:active {
+  transform: scale(0.96);
+}
+
+.delete-btn:focus {
+  outline: none;
+}
+
+/* === Compact Edit Button (matches Delete button size) === */
+.edit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: #14b8a6; /* teal */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  margin-left: 6px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.edit-btn svg {
+  width: 14px;
+  height: 14px;
+  fill: #fff;
+  flex-shrink: 0;
+}
+
+.edit-btn:hover {
+  background: #0ea99a; /* slightly darker teal on hover */
+}
+
+.edit-btn:active {
+  transform: scale(0.96);
+}
+
+.edit-btn:focus {
+  outline: none;
+}
+
+
+
+

@@ -1,0 +1,391 @@
+/* register.css
+   Modern centered card layout — Instagram-like feel
+   Keeps IDs and form functionality unchanged.
+*/
+
+/* Basic resets and typography */
+:root {
+    --bg-1: #f2f5f7;
+    /* page background */
+    --card-bg: #ffffff;
+    /* card background */
+    --muted: #6b7280;
+    /* muted text */
+    --accent: #14b8a6;
+    /* teal accent */
+    --accent-dark: #0ea99a;
+    --danger: #ef4444;
+    --shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+    --radius-lg: 16px;
+    --radius-md: 10px;
+    --fw-medium: 500;
+    --max-width: 420px;
+    --gap: 14px;
+    --glass-border: rgba(255, 255, 255, 0.6);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* background: url("/images/treee.jpeg") no-repeat center center fixed;
+    background-size: cover; */
+    color: #0f172a;
+}
+
+/* Page wrapping and centering */
+.page-wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 18px;
+}
+
+.center-viewport {
+    width: 100%;
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 26px;
+    align-items: start;
+    justify-items: center;
+}
+
+/* Header with brand on left and sign-in on right on wide screens */
+.site-header {
+    width: 100%;
+    max-width: calc(var(--max-width) + 180px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0 8px;
+}
+
+.brand {
+    text-align: left;
+}
+
+.site-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color:aqua;
+}
+
+.site-sub {
+    margin: 2px 0 0 0;
+    font-size: 13px;
+    color: whitesmoke;
+
+}
+
+/* Sign in link */
+.signin-link {
+    text-decoration: none;
+    font-size: 14px;
+    color: whitesmoke;
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+
+.signin-link:hover {
+    background: rgba(20, 184, 166, 0.06);
+    color: black;
+    text-decoration: underline;
+}
+
+/* Card */
+.card {
+    width: 100%;
+    max-width: 560px;
+    background: rgba(255, 255, 255, 0.35);
+    /* semi-transparent white */
+    border-radius: 18px;
+    padding: 28px 30px;
+    box-shadow: 0 18px 50px rgba(6, 22, 38, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.36);
+    backdrop-filter: blur(6px) saturate(120%);
+    -webkit-backdrop-filter: blur(6px) saturate(120%);
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Title */
+.card-title {
+    margin: 0 0 12px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0f172a;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+/* Form layout */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label {
+    font-size: 13px;
+    color: black;
+    font-weight: 500;
+}
+
+/* Inputs and select */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 11px 12px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    background: linear-gradient(180deg, #ffffff, #fbfdff);
+    font-size: 14px;
+    outline: none;
+    transition: box-shadow .14s ease, border-color .14s ease, transform .06s ease;
+    box-shadow: inset 0 -1px 0 rgba(15, 23, 42, 0.02);
+}
+
+input::placeholder {
+    color: #9aa0a6;
+}
+
+input:focus,
+select:focus {
+    border-color: rgba(20, 184, 166, 0.9);
+    box-shadow: 0 6px 20px rgba(20, 184, 166, 0.08);
+    transform: translateY(-1px);
+}
+
+/* Two-column grid for password + role */
+.grid-two {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+@media(min-width:720px) {
+    .grid-two {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Helper text */
+.help-text {
+    margin: 6px 0 0 0;
+    font-size: 12px;
+    color: #9aa0a6;
+}
+
+/* Actions row */
+.form-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: space-between;
+    margin-top: 6px;
+
+}
+
+
+
+/* small link */
+.already-link {
+    color: whitesmoke;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.already-link:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+/* Form status */
+.form-status {
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--danger);
+    min-height: 18px;
+}
+
+/* Footer */
+.site-footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 6px;
+    opacity: 0.95;
+}
+
+/* Small screens: center everything and reduce paddings to feel Instagram-like */
+@media(max-width:540px) {
+    .site-header {
+        max-width: 100%;
+        padding: 0 2px;
+    }
+
+    .brand {
+        text-align: center;
+    }
+
+    .signin-link {
+        display: none;
+    }
+
+    /* hide to mimic compact mobile register flow */
+    .card {
+        padding: 18px;
+        border-radius: 12px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .already-link {
+        text-align: center;
+        display: block;
+        margin-top: 6px;
+    }
+}
+
+/* subtle focus-visible accessibility */
+input:focus-visible,
+select:focus-visible,
+button:focus-visible {
+    outline: 3px solid rgba(20, 184, 166, 0.12);
+    outline-offset: 3px;
+}
+
+/* small accessibility improvements for disabled state */
+button[disabled] {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* optional micro animation to make the form feel alive */
+.card {
+    transform-origin: center top;
+    animation: floatIn .14s ease-out 1;
+}
+
+@keyframes floatIn {
+    from {
+        transform: translateY(6px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* --- Compact Fancy Hover Button --- */
+.fancy-btn {
+      padding: 10px 18px;
+    /* smaller padding */
+    border: unset;
+    border-radius: 12px;
+    /* slightly smaller radius */
+    color: #212121;
+    z-index: 1;
+    background: #e8e8e8;
+    position: relative;
+    font-weight: 700;
+    /* reduced from 1000 → smoother look */
+    font-size: 15px;
+    /* smaller font */
+    -webkit-box-shadow: 3px 6px 14px -3px rgba(0, 0, 0, 0.25);
+    box-shadow: 3px 6px 14px -3px rgba(0, 0, 0, 0.25);
+    transition: all 250ms;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.fancy-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 12px;
+    background-color: #212121;
+    z-index: -1;
+    -webkit-box-shadow: 3px 6px 14px -3px rgba(0, 0, 0, 0.25);
+    box-shadow: 3px 6px 14px -3px rgba(0, 0, 0, 0.25);
+    transition: all 250ms;
+}
+
+.fancy-btn:hover {
+    color: #e8e8e8;
+}
+
+.fancy-btn:hover::before {
+    width: 100%;
+}
+
+.fancy-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* password container layout */
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* match input width */
+.password-container input[type="password"],
+.password-container input[type="text"] {
+    flex: 1;
+    padding-right: 4rem;
+}
+
+/* Background video styling */
+
+#bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover; /* ✅ fills screen while preserving aspect ratio */
+  z-index: -1;
+  background-color: #000; /* prevents white bars during loading */
+}
+
+
+
+
+
+/* Overlay for contrast on top of video */
+

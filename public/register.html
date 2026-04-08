@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Register — Food Rescue</title>
+  <link rel="stylesheet" href="/css/register.css">
+</head>
+
+<body class="auth-body">
+<video autoplay muted loop id="bgVideo">
+  <source src="/videos/sparkle.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+
+
+  <div class="page-wrap">
+    <div class="center-viewport">
+
+      <header class="site-header">
+        <div class="brand">
+          <h1 class="site-title">
+
+            ResQFood
+          </h1>
+          <p class="site-sub">Share surplus food. Save lives. Reduce waste.</p>
+        </div>
+        <a href="/login.html" class="signin-link">Sign in</a>
+      </header>
+
+      <main class="card" aria-labelledby="create-account-title">
+        <h2 id="create-account-title" class="card-title" style="color:aqua">Create an account</h2>
+
+        <!-- POST fallback: uses same endpoint your auth.js hits -->
+        <form id="registerForm" class="form" action="/api/users/register" method="POST" novalidate>
+          <div class="form-row">
+            <label for="name" class="label"style="color:rgb(243, 246, 247)">Full name</label>
+            <input id="name" name="name" type="text" required autocomplete="name" placeholder="Your full name" />
+          </div>
+
+          <div class="form-row">
+            <label for="email" class="label"style="color:rgb(243, 246, 247)">Email</label>
+            <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com" />
+          </div>
+
+          <div class="grid-two">
+            <div class="form-row">
+              <label for="password" class="label"style="color:rgb(243, 246, 247)">Password</label>
+              <input id="password" name="password" type="password" required minlength="8" autocomplete="new-password"
+                placeholder="At least 8 characters" />
+
+            </div>
+
+            <div class="form-row">
+              <label for="role" class="label"style="color:rgb(243, 246, 247)">Role</label>
+              <select id="role" name="role" class="select">
+                <option value="donor">Donor</option>
+                <option value="volunteer">Volunteer</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button id="submitBtn" type="submit" class="fancy-btn">
+              Create account
+            </button>
+
+            <a href="/login.html" class="already-link">Already registered?</a>
+          </div>
+
+          <!-- accessible status -->
+          <div id="formStatus" role="status" aria-live="polite" class="form-status"></div>
+        </form>
+      </main>
+
+      <!-- <footer class="site-footer">
+        food rescue project • Simple and responsive
+      </footer> -->
+
+    </div>
+  </div>
+
+  <script src="/js/auth.js"></script>
+  <script>
+    // Only intercept submission if auth.js exposes registerFormHandler
+    if (typeof registerFormHandler === 'function') {
+      const form = document.getElementById('registerForm');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('submitBtn');
+        btn.disabled = true;
+        try { await registerFormHandler(form); } finally { btn.disabled = false; }
+      });
+    }
+  </script>
+</body>
+
+</html>

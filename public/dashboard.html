@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard — Food Rescue</title> <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Your plain CSS files -->
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/chatbot.css">
+</head>
+
+<body class="app-body"> <!-- top bar -->
+  <video autoplay muted loop id="bgVideo">
+  <source src="/videos/sparkle.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+  <header class="topbar">
+    <div class="container">
+      <div class="brand-row">
+        <div class="brand-left">
+          <h1 class="app-title" style="color:black">ResQFood</h1> <span class="app-sub" style="color:black">Donations & Pickups</span>
+        </div>
+        <!-- <div class="user-row"> <div id="userInfo" class="user-info"></div> <button id="logoutBtn" class="btn-outline">Log out</button> </div> -->
+        <div class="user-row">
+          <div id="userInfo" class="user-info"> <span class="user-name"></span> </div>
+           <!-- black Logout Button -->
+<button id="logoutBtn" class="Btn">
+  <div class="sign">
+    <svg viewBox="0 0 512 512">
+      <path
+        d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9
+        c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1
+        c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256
+        c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128
+        C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z">
+      </path>
+    </svg>
+  </div>
+  <div class="text">Logout</div>
+</button>
+
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="container main-grid"> <!-- Listings (main) -->
+    <section class="panel listings-panel">
+      <div class="panel-header">
+        <h2 class="panel-title">Available Listings</h2>
+        <div class="panel-actions"> 
+          <button id="refreshBtn" class="fancy-btn small">Refresh</button>
+
+         </div>
+      </div>
+      <div id="listings" class="listings-stack"> <!-- Listing cards inserted by JS --> </div>
+    </section> <!-- Right column: create (donor) / actions (volunteer) -->
+    <aside class="panel side-panel">
+      <div id="donorSection" class="hidden">
+        <h3 class="section-title">Create Listing</h3>
+        <form id="createFoodForm" class="stack-form"> <input id="title" placeholder="Title" required /> <input
+            id="description" placeholder="Short description" required /> <input id="quantity" placeholder="Quantity"
+            type="number" min="1" required /> <input id="expiry_date" placeholder="Expiry date" type="date" required />
+          <input id="location" placeholder="Location" required /> 
+          <!-- Themed Fancy Create Button -->
+<button id="createBtn" type="submit" class="fancy-btn full">Create</button>
+
+
+          <pre id="createOutput" class="form-output"></pre>
+        </form>
+      </div>
+      <div id="volunteerSection" class="hidden">
+        <h3 class="section-title">Volunteer Actions</h3>
+        <p class="muted">Claim available listings from the left. You can complete pickups you claimed.</p>
+        <pre id="volOutput" class="form-output"></pre>
+      </div>
+    </aside>
+  </main> <!-- toast container (optional) -->
+  <div id="toastRoot" class="toast-root"></div> <!-- Socket.io client (served by server) -->
+  <!-- Chatbot widget -->
+  <div id="chatbot-widget" class="chatbot-widget">
+      <!-- 💬 ResQBot Animated Loader Toggle -->
+<div id="chatbot-toggle" class="loader-wrapper" role="button" tabindex="0" aria-label="Open chatbot">
+  <span class="loader-letter">R</span>
+  <span class="loader-letter">e</span>
+  <span class="loader-letter">s</span>
+  <span class="loader-letter">Q</span>
+  <span class="loader-letter">B</span>
+  <span class="loader-letter">o</span>
+  <span class="loader-letter">t</span>
+  <div class="loader"></div>
+</div>
+    <div id="chatbot-window" class="chatbot-window hidden">
+      <div class="chatbot-header">
+        <span>🤖 ResQBot</span>
+        <button id="chatbot-close">✖</button>
+      </div>
+      <div id="chatbot-messages" class="chatbot-messages">
+        <div class="bot-msg">Hi there! 👋 I’m <b>ResQBot</b> — your friendly guide to the Food Rescue platform.<br>
+          Ask me anything about how it works!</div>
+      </div>
+      <div class="chatbot-input">
+        <input type="text" id="chatbot-user-input" placeholder="Type your question..." />
+        <button id="chatbot-send">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  
+  <script src="/js/chatbot.js"></script>
+  <script src="/socket.io/socket.io.js"></script> <!-- dashboard logic -->
+  <script src="/js/dashboard.js"></script>
+  <script> // dashboard.js initializes itself (no extra code needed here) </script>
+</body>
+
+</html>
